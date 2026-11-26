@@ -44,8 +44,8 @@ export function CvModal({ isOpen, onClose }: CvModalProps) {
         </div>
 
         <p className="m-0 text-[var(--text-muted)] text-[0.96rem] leading-relaxed">
-          BSc Computer Science student at Dilla University &amp; Full-Stack Developer building web,
-          Telegram, and Android systems for Ethiopian businesses.
+          Full-stack web and app developer finishing my BSc in Computer Science at Dilla University,
+          building websites, Android apps, and Telegram bots for businesses in Ethiopia.
         </p>
 
         <p className="m-0 text-[var(--text-muted)] text-[0.96rem] leading-relaxed">

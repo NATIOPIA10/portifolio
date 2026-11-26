@@ -58,11 +58,12 @@ export function HomeView({ onNavigate, onOpenCv }: HomeViewProps) {
             </h1>
 
             <p className="m-0 mb-2 text-[1.1rem] font-semibold">
-              Full-stack developer · Dilla University, Ethiopia
+              Full-stack web &amp; app developer · Dilla University, Ethiopia
             </p>
 
             <p className="m-0 mb-7 text-[1.06rem] text-[var(--text-muted)] max-w-[58ch]">
-              Inventory, sales, bookings and campus systems. Built for Ethiopia.
+              Websites, Android apps and Telegram bots for businesses in Ethiopia. Simple to use,
+              and made to fit your work.
             </p>
 
             <div className="flex flex-wrap gap-2.5 mb-7">

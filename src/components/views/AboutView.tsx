@@ -8,7 +8,7 @@ interface AboutViewProps {
 const FACT_TILES = [
   {
     label: 'Focus',
-    value: 'Full-stack web development',
+    value: 'Full-stack web & app development',
     icon: Code2,
   },
   {
@@ -56,7 +56,9 @@ export function AboutView({ onNavigate }: AboutViewProps) {
                 I&apos;m a full-stack web and app developer.
               </p>
               <p className="m-0 text-[var(--text-muted)] text-[0.96rem] leading-[1.6]">
-                I build websites, Android apps and Telegram bots for businesses in Ethiopia. Simple to use, and made to fit your work. I'm finishing my BSc in Computer Science at Dilla University.
+                I build websites, Android apps and Telegram bots for businesses in Ethiopia. Simple
+                to use, and made to fit your work. I&apos;m finishing my BSc in Computer Science at
+                Dilla University.
               </p>
             </div>
 
