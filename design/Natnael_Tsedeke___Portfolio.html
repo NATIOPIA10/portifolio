@@ -1,0 +1,1424 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natnael Tsedeke | Full-Stack Developer</title>
+  <meta name="description" content="Natnael Tsedeke builds inventory, sales and management software for businesses in Ethiopia. Full-stack developer, Dilla University.">
+  <meta name="theme-color" content="#080d0b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080d0b;
+      --bg-elevated: rgba(15, 24, 20, 0.74);
+      --bg-elevated-hover: rgba(22, 36, 30, 0.9);
+      --bg-header: rgba(8, 13, 11, 0.82);
+      --border: rgba(255, 255, 255, 0.09);
+      --border-strong: rgba(61, 220, 151, 0.38);
+      --text: #eef5f1;
+      --text-muted: #9eb3a8;
+      --text-soft: #71877c;
+      --accent: #3ddc97;
+      --accent-dim: rgba(61, 220, 151, 0.14);
+      --accent-text: #061810;
+      --gold: #f2b84b;
+      --gold-dim: rgba(242, 184, 75, 0.14);
+      --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.38);
+      --radius-card: 20px;
+      --radius-pill: 9999px;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+      --max-w: 1140px;
+      --header-h: 70px;
+    }
+
+    html[data-theme="light"] {
+      --bg: #f4f8f6;
+      --bg-elevated: rgba(255, 255, 255, 0.82);
+      --bg-elevated-hover: rgba(255, 255, 255, 0.98);
+      --bg-header: rgba(244, 248, 246, 0.85);
+      --border: rgba(8, 28, 20, 0.1);
+      --border-strong: rgba(18, 138, 88, 0.42);
+      --text: #0c1913;
+      --text-muted: #42594e;
+      --text-soft: #637a6f;
+      --accent: #149e66;
+      --accent-dim: rgba(20, 158, 102, 0.12);
+      --accent-text: #ffffff;
+      --gold: #c98612;
+      --gold-dim: rgba(201, 134, 18, 0.12);
+      --shadow-card: 0 14px 36px rgba(10, 30, 20, 0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .skip-link {
+      position: fixed;
+      top: -100px;
+      left: 16px;
+      z-index: 200;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      background: var(--accent);
+      color: var(--accent-text);
+      font-weight: 700;
+      font-size: 0.875rem;
+      transition: top 0.2s ease;
+    }
+    .skip-link:focus { top: 16px; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: 20px;
+    }
+    @media (min-width: 768px) {
+      .container { padding-inline: 32px; }
+    }
+
+    .glass {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, var(--accent) 10%, var(--gold) 95%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 0.92rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--accent); color: var(--accent-text); box-shadow: 0 8px 24px rgba(61, 220, 151, 0.24); }
+    .btn-primary:hover { filter: brightness(1.06); }
+    .btn-secondary { background: var(--bg-elevated); border-color: var(--border); color: var(--text); }
+    .btn-secondary:hover { border-color: var(--border-strong); background: var(--bg-elevated-hover); }
+    .btn-ghost { background: transparent; border-color: var(--border); color: var(--text-muted); }
+    .btn-ghost:hover { color: var(--text); border-color: var(--text-soft); }
+    .btn-sm { padding: 8px 15px; font-size: 0.85rem; }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-h);
+      background: var(--bg-header);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.02rem;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      background: none;
+      border: 0;
+      padding: 0;
+    }
+    .logo-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      box-shadow: 0 0 12px var(--accent);
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-tab {
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+    .nav-tab:hover { color: var(--text); }
+    .nav-tab[aria-selected="true"] {
+      color: var(--accent);
+      background: var(--accent-dim);
+      border-color: var(--border-strong);
+    }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.18s ease;
+    }
+    .icon-btn:hover { border-color: var(--border-strong); }
+    .header-cta { display: none; }
+    .menu-toggle { display: inline-flex; }
+
+    @media (min-width: 920px) {
+      .nav-links { display: flex; }
+      .header-cta { display: inline-flex; }
+      .menu-toggle { display: none; }
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: var(--header-h) 0 auto 0;
+      z-index: 95;
+      background: var(--bg-header);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 16px 20px;
+    }
+    .mobile-nav.is-open { display: block; }
+    .mobile-nav-list { display: grid; gap: 6px; }
+    .mobile-nav-list .nav-tab { text-align: left; padding: 11px 14px; border-radius: 12px; }
+
+    /* Main & View Panels */
+    main {
+      flex: 1;
+      position: relative;
+      padding: 28px 0 40px;
+    }
+    @media (min-width: 900px) {
+      main { padding: 40px 0 56px; }
+    }
+
+    .view-panel {
+      display: none;
+      animation: panelIn 0.22s ease;
+    }
+    .view-panel.is-active {
+      display: block;
+    }
+    @keyframes panelIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Tech Icon Badges (Icons only, tooltip on hover) */
+    .tech-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .tech-icon {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease;
+    }
+    html[data-theme="light"] .tech-icon {
+      background: rgba(8, 28, 20, 0.04);
+    }
+    .tech-icon:hover {
+      transform: translateY(-2px);
+      border-color: var(--border-strong);
+      background: var(--accent-dim);
+    }
+    .tech-icon svg {
+      width: 21px;
+      height: 21px;
+      display: block;
+    }
+    .tech-icon-sm {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+    }
+    .tech-icon-sm svg {
+      width: 18px;
+      height: 18px;
+    }
+    .tech-icon::after {
+      content: attr(data-name);
+      position: absolute;
+      bottom: calc(100% + 7px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      padding: 4px 9px;
+      border-radius: 8px;
+      background: #0d1612;
+      color: #eef5f1;
+      border: 1px solid var(--border-strong);
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      z-index: 20;
+    }
+    .tech-icon:hover::after,
+    .tech-icon:focus-visible::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Home View (Hero + Stats) */
+    .hero-wrap {
+      position: relative;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(880px, 110vw);
+      height: 440px;
+      background:
+        radial-gradient(circle at 28% 40%, rgba(61, 220, 151, 0.16), transparent 60%),
+        radial-gradient(circle at 72% 45%, rgba(242, 184, 75, 0.11), transparent 55%);
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 44px;
+      }
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--accent-dim);
+      border: 1px solid var(--border-strong);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      margin: 0 0 14px;
+      font-size: clamp(2.25rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.07;
+      letter-spacing: -0.035em;
+    }
+    .hero-role { margin: 0 0 8px; font-size: 1.02rem; font-weight: 600; }
+    .hero-sub { margin: 0 0 24px; font-size: 1.02rem; color: var(--text-muted); max-width: 50ch; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+
+    .hero-photo-wrap {
+      position: relative;
+      max-width: 340px;
+      width: 100%;
+      margin-inline: auto;
+    }
+    .hero-photo-glow {
+      position: absolute;
+      inset: -14px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(61, 220, 151, 0.36), rgba(242, 184, 75, 0.25));
+      filter: blur(24px);
+      opacity: 0.7;
+      z-index: 0;
+    }
+    .hero-photo-frame {
+      position: relative;
+      z-index: 1;
+      padding: 8px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(61, 220, 151, 0.45), rgba(242, 184, 75, 0.28), var(--border));
+      box-shadow: var(--shadow-card);
+    }
+    .hero-photo-frame img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 18px;
+      background: #0d1612;
+    }
+
+    .stats-grid {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 18px 22px;
+    }
+    @media (min-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 0; }
+      .stat-item:not(:last-child) { border-right: 1px solid var(--border); }
+      .stat-item { padding-inline: 18px; }
+      .stat-item:first-child { padding-left: 4px; }
+    }
+    .stat-item { display: flex; flex-direction: column; gap: 2px; padding: 6px 10px; }
+    .stat-value { font-size: 1.4rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+    .stat-label { font-size: 0.84rem; color: var(--text-muted); }
+
+    /* Section Headers */
+    .section-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+    .section-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 0.875rem; font-weight: 600; color: var(--text-muted); }
+    .num-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-strong);
+      color: var(--accent);
+    }
+    .section-title { margin: 0; font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
+    .section-subtitle { margin: 0; color: var(--text-muted); font-size: 0.98rem; }
+
+    /* About */
+    .about-grid { display: grid; gap: 22px; }
+    @media (min-width: 900px) { .about-grid { grid-template-columns: 1.05fr 1fr; align-items: start; gap: 28px; } }
+    .about-copy { padding: 26px; display: grid; gap: 14px; }
+    .about-lead { margin: 0; font-size: 1.15rem; font-weight: 600; line-height: 1.5; }
+    .about-body { margin: 0; color: var(--text-muted); font-size: 0.96rem; }
+    .facts-grid { display: grid; gap: 12px; }
+    @media (min-width: 540px) { .facts-grid { grid-template-columns: repeat(2, 1fr); } }
+    .fact-tile { padding: 18px; display: flex; flex-direction: column; gap: 5px; }
+    .fact-label { font-family: var(--font-mono); font-size: 0.73rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+    .fact-value { font-size: 0.93rem; font-weight: 600; line-height: 1.45; }
+
+    /* Skills */
+    .skills-grid { display: grid; gap: 16px; }
+    @media (min-width: 768px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+    .skill-group { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .skill-group-title { margin: 0; font-size: 1rem; font-weight: 700; }
+
+    /* Projects */
+    .featured-card {
+      padding: 24px;
+      display: grid;
+      gap: 24px;
+      margin-bottom: 20px;
+      border-color: var(--border-strong);
+    }
+    @media (min-width: 900px) {
+      .featured-card { padding: 28px; grid-template-columns: 1fr 1.05fr; align-items: center; gap: 32px; }
+    }
+    .featured-badge {
+      display: inline-flex;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      background: var(--gold-dim);
+      border: 1px solid rgba(242, 184, 75, 0.4);
+      color: var(--gold);
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+    .project-title { margin: 0 0 8px; font-size: 1.32rem; font-weight: 800; letter-spacing: -0.02em; }
+    .featured-card .project-title { font-size: 1.65rem; }
+    .project-desc { margin: 0 0 14px; color: var(--text-muted); font-size: 0.94rem; }
+    .checklist { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 7px; }
+    .checklist li { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+    .check-icon {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--accent-dim); color: var(--accent);
+      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .project-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+
+    .carousel { position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: #0b120f; }
+    .carousel-track { display: flex; transition: transform 0.35s ease; }
+    .carousel-slide { min-width: 100%; }
+    .carousel-slide img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .carousel-bar {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 10px 14px; background: rgba(8, 13, 11, 0.86);
+      border-top: 1px solid rgba(255, 255, 255, 0.08); color: #eef5f1;
+    }
+    .carousel-caption { font-size: 0.8rem; font-weight: 600; color: #c7d8cf; }
+    .carousel-controls { display: flex; align-items: center; gap: 8px; }
+    .carousel-dots { display: flex; gap: 6px; margin-right: 4px; }
+    .carousel-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.28); }
+    .carousel-dot[aria-selected="true"] { background: var(--accent); transform: scale(1.2); }
+    .carousel-btn {
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06); color: #eef5f1;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+
+    .projects-grid { display: grid; gap: 16px; }
+    @media (min-width: 768px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+    .project-card { padding: 22px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px; }
+    .project-type { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Home Best Products Showcase Carousel */
+    .home-featured { margin-top: 32px; }
+    .home-featured-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .home-featured-title {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .showcase-carousel {
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+    }
+    .showcase-viewport {
+      overflow: hidden;
+      border-radius: 14px;
+    }
+    .showcase-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .showcase-slide {
+      min-width: 100%;
+      display: grid;
+      gap: 18px;
+      align-items: end;
+    }
+    @media (min-width: 768px) {
+      .showcase-slide {
+        grid-template-columns: 1fr 190px;
+        gap: 24px;
+      }
+    }
+    .device-frame {
+      position: relative;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #0b120f;
+      overflow: hidden;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+    }
+    .device-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .device-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
+    }
+    .device-tag {
+      margin-left: auto;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+    .device-desktop img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+    .device-mobile {
+      max-width: 210px;
+      margin-inline: auto;
+      border-radius: 22px;
+      border: 2px solid var(--border-strong);
+      padding: 6px;
+      background: #0b120f;
+    }
+    .device-mobile img {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+    .showcase-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .showcase-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .showcase-name {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+    .showcase-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .showcase-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: border-color 0.16s ease, background-color 0.16s ease;
+    }
+    .showcase-btn:hover {
+      border-color: var(--border-strong);
+      background: var(--accent-dim);
+    }
+
+    /* Journey */
+    .journey-list { display: grid; gap: 12px; }
+    .journey-step { padding: 18px 22px; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
+    .journey-step.is-now { border-color: var(--border-strong); }
+    .step-num {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--accent-dim); border: 1px solid var(--border-strong);
+      color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .step-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 3px; }
+    .step-title { margin: 0; font-size: 1.05rem; font-weight: 700; }
+    .now-badge {
+      padding: 2px 10px; border-radius: var(--radius-pill);
+      font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+      background: var(--gold-dim); border: 1px solid rgba(242, 184, 75, 0.45); color: var(--gold);
+    }
+    .step-desc { margin: 0; color: var(--text-muted); font-size: 0.92rem; }
+
+    /* Contact */
+    .contact-grid { display: grid; gap: 14px; }
+    @media (min-width: 768px) { .contact-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .contact-grid { grid-template-columns: repeat(3, 1fr); } }
+    .contact-card { padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+    .contact-card.is-primary { border-color: var(--border-strong); }
+    .contact-label { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+    .contact-items { display: grid; gap: 7px; }
+    .contact-link { font-size: 0.94rem; font-weight: 600; word-break: break-word; }
+    .contact-link:hover { color: var(--accent); }
+    .contact-note { margin: 0; font-size: 0.84rem; color: var(--text-muted); }
+
+    /* Floating Telegram & Footer */
+    .floating-dock { position: fixed; right: 18px; bottom: 18px; z-index: 90; display: flex; flex-direction: column; gap: 10px; }
+    .fab {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent); color: var(--accent-text);
+      display: inline-flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.18s ease;
+    }
+    .fab:hover { transform: translateY(-2px); }
+
+    .site-footer { border-top: 1px solid var(--border); padding: 22px 0; }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; font-size: 0.85rem; color: var(--text-muted); }
+
+    /* CV Modal */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 150;
+      background: rgba(4, 8, 6, 0.72); backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-backdrop.is-open { display: flex; }
+    .modal-card { width: 100%; max-width: 500px; padding: 26px; display: grid; gap: 14px; }
+    .modal-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .modal-title { margin: 0; font-size: 1.2rem; font-weight: 800; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <button type="button" class="logo" data-view-target="home">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <span>Natnael Tsedeke</span>
+      </button>
+
+      <nav class="nav-links" role="tablist" aria-label="Portfolio sections">
+        <button class="nav-tab" type="button" role="tab" aria-selected="true" data-view-target="home">Home</button>
+        <button class="nav-tab" type="button" role="tab" aria-selected="false" data-view-target="about">About</button>
+        <button class="nav-tab" type="button" role="tab" aria-selected="false" data-view-target="skills">Skills</button>
+        <button class="nav-tab" type="button" role="tab" aria-selected="false" data-view-target="projects">Projects</button>
+        <button class="nav-tab" type="button" role="tab" aria-selected="false" data-view-target="journey">Journey</button>
+        <button class="nav-tab" type="button" role="tab" aria-selected="false" data-view-target="contact">Contact</button>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">
+          <svg id="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none;">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+
+        <button type="button" class="btn btn-primary btn-sm header-cta" data-view-target="contact">Let&#39;s talk →</button>
+
+        <button id="menu-toggle" class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-list">
+      <button class="nav-tab" type="button" data-view-target="home">Home</button>
+      <button class="nav-tab" type="button" data-view-target="about">01 · About</button>
+      <button class="nav-tab" type="button" data-view-target="skills">02 · Skills</button>
+      <button class="nav-tab" type="button" data-view-target="projects">03 · Projects</button>
+      <button class="nav-tab" type="button" data-view-target="journey">04 · Journey</button>
+      <button class="nav-tab" type="button" data-view-target="contact">05 · Contact</button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- VIEW: HOME -->
+    <section id="view-home" class="view-panel is-active" role="tabpanel">
+      <div class="container hero-wrap">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Hello, I&#39;m Natnael</div>
+            <h1 class="hero-title">Software that runs <span class="gradient-text">your business.</span></h1>
+            <p class="hero-role">Full-stack developer · Dilla University, Ethiopia</p>
+            <p class="hero-sub">Inventory, sales, bookings and campus systems. Built for Ethiopia.</p>
+
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary" data-view-target="projects">View projects</button>
+              <button type="button" class="btn btn-secondary" data-view-target="contact">Let&#39;s talk</button>
+              <button id="open-cv" type="button" class="btn btn-ghost">Download CV</button>
+            </div>
+
+            <!-- Core tech icons (icons only) -->
+            <div class="tech-icons" aria-label="Core technologies">
+              <span class="tech-icon" data-name="React" title="React" aria-label="React" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#61DAFB" stroke-width="1.6"><circle cx="12" cy="12" r="2.1" fill="#61DAFB"></circle><ellipse cx="12" cy="12" rx="9.5" ry="3.8"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"></ellipse></svg>
+              </span>
+              <span class="tech-icon" data-name="Next.js" title="Next.js" aria-label="Next.js" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.6"></circle><path d="M9 16V8l7.5 9.5M15 8v5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="Supabase" title="Supabase" aria-label="Supabase" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="#3ECF8E"><path d="M13.5 3 5.5 13.5h6.2L10.5 21l8-10.5h-6.2L13.5 3Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="PostgreSQL" title="PostgreSQL" aria-label="PostgreSQL" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4D9DE0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6.5" rx="7" ry="3"></ellipse><path d="M5 6.5v11c0 1.66 3.13 3 7 3s7-1.34 7-3v-11"></path><path d="M5 12c0 1.66 3.13 3 7 3s7-1.34 7-3"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="Kotlin" title="Kotlin" aria-label="Kotlin" tabindex="0">
+                <svg viewBox="0 0 24 24"><defs><linearGradient id="kt1" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#7F52FF"></stop><stop offset="1" stop-color="#C711E1"></stop></linearGradient></defs><path fill="url(#kt1)" d="M4 4h16l-8 8 8 8H4V4Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="Python" title="Python" aria-label="Python" tabindex="0">
+                <svg viewBox="0 0 24 24"><path fill="#3776AB" d="M12 3c-3 0-2.8 1.3-2.8 1.3v1.4h2.9v.5H8c-1.5 0-2.8.9-2.8 3.2 0 2.3 1.1 3.1 2.4 3.1h1.2v-1.6c0-1.4 1.2-2.6 2.7-2.6h3.4c1.2 0 2.1-.9 2.1-2.1V5.2C17 3.9 15.8 3 12 3Zm-1.5 1.2a.6.6 0 1 1 0 1.2.6.6 0 0 1 0-1.2Z"></path><path fill="#FFD43B" d="M12 21c3 0 2.8-1.3 2.8-1.3v-1.4h-2.9v-.5H16c1.5 0 2.8-.9 2.8-3.2 0-2.3-1.1-3.1-2.4-3.1h-1.2v1.6c0 1.4-1.2 2.6-2.7 2.6H9.1c-1.2 0-2.1.9-2.1 2.1v1c0 1.3 1.2 2.2 5 2.2Zm1.5-1.2a.6.6 0 1 1 0-1.2.6.6 0 0 1 0 1.2Z"></path></svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="hero-photo-wrap">
+            <div class="hero-photo-glow" aria-hidden="true"></div>
+            <div class="hero-photo-frame">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrCtWY0cxS5KpEwpCPuhS9Yq_71fej_wws9BKcsMafwu8TdSLO53WTaMNul0__T5nAtmNbZGLN1dGLWMYznF9xUdjAcr7dgMSgEDoaEPKiunrJwqlt4X39tw0TvzuO8Pz7iAZm84CIPUUT-Ow12ThBH6xsr7lYKIs_itruPJLnSn5ISxC8B3Tz98JSbiGDIimM2bqXL8mNyfy2HkjR8MtqD-9SgUuG1UjK0pDQeCcnsA2GOBNYsHLnDz6Qts" alt="Portrait of Natnael Tsedeke, Full-Stack Developer" data-stitch-original-src="d50e8d37c33a5ffb===images/natnael_portrait.jpg">
+            </div>
+          </div>
+        </div>
+
+        <div class="glass stats-grid">
+          <div class="stat-item"><span class="stat-value">6</span><span class="stat-label">Featured projects</span></div>
+          <div class="stat-item"><span class="stat-value">4</span><span class="stat-label">Live web products</span></div>
+          <div class="stat-item"><span class="stat-value">3</span><span class="stat-label">Platforms: web, Telegram, Android</span></div>
+          <div class="stat-item"><span class="stat-value">🇪🇹</span><span class="stat-label">Built for Ethiopia</span></div>
+        </div>
+
+        <!-- Best Products Dual-Device Showcase Carousel -->
+        <div class="home-featured">
+          <div class="home-featured-head">
+            <h2 class="home-featured-title">Best <span class="gradient-text">products</span></h2>
+            <button type="button" class="btn btn-ghost btn-sm" data-view-target="projects">See all 6 →</button>
+          </div>
+
+          <div id="showcase-carousel" class="glass showcase-carousel" aria-roledescription="carousel" aria-label="Best products desktop and mobile previews">
+            <div class="showcase-viewport">
+              <div id="showcase-track" class="showcase-track">
+                <!-- Slide 1: MobiStock -->
+                <div class="showcase-slide">
+                  <div class="device-frame device-desktop">
+                    <div class="device-bar">
+                      <span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span>
+                      <span class="device-tag">Desktop · mobistock-nine.vercel.app</span>
+                    </div>
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrB804Z2HUVRhWB_ieVQz16RGAbIqlk4xbYRiMdVNidMLZaNxvhtqYHNHzdn0Tr01OMJMQqMvA610qkx6R53ACDv1KpVjSQa6LIRRZimm0N7qrbLbCPQ6HLJQI98c1xF2QwAvn24OK-4iiLG2qpULO47B_S033v2--R7RXs7EYyOpitOhUnJ0qWSimazA9WDl1_Y8jjbEulYM_ZwSVckcYNZJqW2CcOTkuxCufbe6dJBFOSiIGjIiu2RhxyW2jQ" alt="MobiStock desktop interface" data-stitch-original-src="b13848a6c53b3b3f===images/mobistock_inventory.jpg">
+                  </div>
+                  <div class="device-frame device-mobile">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrBlMBP1DLDaPhaYZFAgexKfYUBvWBJ2DPQimOdIGgLMog9fe5UGX5Cs9aPb_c5rQrYQ3kMzOPPmaGmW4RxTUJvOJmGqV7PlEF1QOs_eLCulATi4IocrUNSSJJOvdYNQ1FsdSOCBBgUl4nxhw93l0ftnPbYmQ76lXDlZOG3qYGukCVP4SMpXv1tr3it0dGioLz9bJCWzYGuiwYDMS1_kz-DCQw93F3E3tz7NykuzQtTP9d-kzHs7mcucXjpP" alt="MobiStock mobile interface" data-stitch-original-src="2c16e5c924ae41d1===images/mobistock_mobile.jpg">
+                  </div>
+                </div>
+
+                <!-- Slide 2: GameZone -->
+                <div class="showcase-slide">
+                  <div class="device-frame device-desktop">
+                    <div class="device-bar">
+                      <span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span>
+                      <span class="device-tag">Desktop · gamezone-supabase.vercel.app</span>
+                    </div>
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrDD7ftNmIZ3-9P5-jw2vHRPRhCEmr_WObKVMln40ErLMscIRoFw50oTaudGd1KjOPbvfqBDXIkGmLY2KfJuk-Hcu1dP4-h2qIW3vSoQLBsmkUN_6FfMODMg9iOcYb_CQKeEJyJxdgqQJj0SqwyxmdnsYSX-ffZeClHDWPGK7jqrxQIlgZdMEnRazt74WBOwD-2xAdS1E37ZUoxmiZtjrfu0IQW9_XHdfvHVLc5EEWgx40B8gJsXefW_eLAy" alt="GameZone desktop interface" data-stitch-original-src="d9cae84cc8c94124===images/gamezone_desktop.jpg">
+                  </div>
+                  <div class="device-frame device-mobile">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrBCHRA8Xx1EEEu9DXd1hMp8AvvJ8xL1GUvHQ4yp__6vlduZKTIfnF7zgegkfQPohLzQw7rq_vlCZU736Qkn5mxeTIfcfRAwQQJ9deVmZ20QYJf5qbsb7FwhAySl6Xe-rH0D760a5I-w7wW9WJ5GAWJwpGJAXVgFfyBckHnZvDaOZ7ghp6_qvL3SSsjPN8fNkzksCRUVN3PioPTvdHx6JmNQAgdmtYG-XtxPuJT8M-kfXOk-MLnuB0Jz1cY" alt="GameZone mobile interface" data-stitch-original-src="52ca843ce25f156c===images/gamezone_mobile.jpg">
+                  </div>
+                </div>
+
+                <!-- Slide 3: Dilla Incubation -->
+                <div class="showcase-slide">
+                  <div class="device-frame device-desktop">
+                    <div class="device-bar">
+                      <span class="device-dot"></span><span class="device-dot"></span><span class="device-dot"></span>
+                      <span class="device-tag">Desktop · dilla-incubation.vercel.app</span>
+                    </div>
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCwlZ0pqMMAIE7y2nkOpYSFUagH8Gjv2ugItNi4lSobqRH6K7cKx_T30nhWPDFcdG1fidR5IlEbYQ_9ghlnOKGzkEdKPxvrsjGakNORufCnfSgP5MFIaX9BA0FKQczFjzv1a7kbMez0K5bFjrDq4Ua0JjiniFkVXDB4ugoolqO2ER53aZfT77tHSNHwj3sHHuvIL97P-R7hr2WTJzYuY0ZYI2gl3kLGlZrI0UDSa1nYhEs7dBGGGNiA" alt="Dilla University Incubation Center desktop interface" data-stitch-original-src="3b5e4f50b4c9e3e9===images/dilla_desktop.jpg">
+                  </div>
+                  <div class="device-frame device-mobile">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrB3DgGxsi29-WO74E_d6D0PVrxBcqsTIiPq65ClJuXflk34D4bjpnTDvjDHoWi4Y5hBzcALoJW961NmpQlNElawgufKOYZ1tapCNgZ5I-N9wUo4zllUp1YSsy1JJnCdsZ144tOwBEuVzbMpl98wr0mm8dauAOve3PZp8YawMqfDQrWZ2PB0oHy5YiDOSr26tKeMuZoEA0ljKgcxYCB4zRuidHHGhOXZldcWuIgO3obWyLZJJnJd8w" alt="Dilla University Incubation Center mobile interface" data-stitch-original-src="dece2f581579e50c===images/dilla_mobile.jpg">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="showcase-footer">
+              <div class="showcase-meta">
+                <span id="showcase-badge" class="featured-badge" style="margin-bottom:0;">FEATURED</span>
+                <h3 id="showcase-name" class="showcase-name">MobiStock</h3>
+                <a id="showcase-link" href="https://mobistock-nine.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Live →</a>
+              </div>
+
+              <div class="showcase-controls">
+                <div class="carousel-dots" role="tablist" aria-label="Choose featured product">
+                  <button class="carousel-dot showcase-dot" type="button" role="tab" aria-selected="true" aria-label="MobiStock" data-showcase="0"></button>
+                  <button class="carousel-dot showcase-dot" type="button" role="tab" aria-selected="false" aria-label="GameZone" data-showcase="1"></button>
+                  <button class="carousel-dot showcase-dot" type="button" role="tab" aria-selected="false" aria-label="Dilla Incubation" data-showcase="2"></button>
+                </div>
+                <button id="showcase-prev" class="showcase-btn" type="button" aria-label="Previous product">‹</button>
+                <button id="showcase-next" class="showcase-btn" type="button" aria-label="Next product">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: 01 ABOUT -->
+    <section id="view-about" class="view-panel" role="tabpanel">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker"><span class="num-pill">01</span><span>About</span></div>
+          <h2 class="section-title">The short <span class="gradient-text">version.</span></h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="glass about-copy">
+            <p class="about-lead">I&#39;m a Computer Science student at Dilla University and a full-stack developer.</p>
+            <p class="about-body">I turn paper records and spreadsheets into simple systems that work: stock, sales, bookings, approvals. Fast to use, built around how your team actually works.</p>
+          </div>
+
+          <div class="facts-grid">
+            <div class="glass fact-tile"><span class="fact-label">Focus</span><span class="fact-value">Full-stack web development</span></div>
+            <div class="glass fact-tile"><span class="fact-label">Education</span><span class="fact-value">BSc Computer Science, Dilla University</span></div>
+            <div class="glass fact-tile"><span class="fact-label">Location</span><span class="fact-value">Ethiopia</span></div>
+            <div class="glass fact-tile"><span class="fact-label">Interests</span><span class="fact-value">Software architecture, databases, cybersecurity, machine learning</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: 02 SKILLS (Icons only) -->
+    <section id="view-skills" class="view-panel" role="tabpanel">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker"><span class="num-pill">02</span><span>Skills</span></div>
+          <h2 class="section-title">Tools I <span class="gradient-text">build</span> with.</h2>
+          <p class="section-subtitle">Hover or tap any icon to see the tool.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Languages -->
+          <div class="glass skill-group">
+            <h3 class="skill-group-title">Languages</h3>
+            <div class="tech-icons">
+              <span class="tech-icon" data-name="JavaScript" title="JavaScript" aria-label="JavaScript" tabindex="0">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="#F7DF1E"></rect><path d="M10.5 16.5c0 1.1-.6 1.7-1.6 1.7-.7 0-1.2-.3-1.5-.8l1-.6c.2.3.4.5.7.5.3 0 .5-.2.5-.6v-4.2h1v4Zm2.2.8c.5.5 1.1.8 1.9.8 1.1 0 1.9-.6 1.9-1.6 0-.9-.5-1.3-1.6-1.7l-.5-.2c-.5-.2-.8-.3-.8-.7 0-.3.3-.6.7-.6.4 0 .7.2.9.5l.9-.6c-.4-.6-1-.9-1.8-.9-1 0-1.8.6-1.8 1.6 0 .9.5 1.3 1.5 1.7l.5.2c.6.2.9.4.9.8 0 .4-.4.6-.9.6-.5 0-.9-.2-1.2-.6l-.6.8Z" fill="#111"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="TypeScript" title="TypeScript" aria-label="TypeScript" tabindex="0">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="#3178C6"></rect><path d="M6.5 11.2h4.2v1.2H9.3V18H8v-5.6H6.5v-1.2Zm5.4 5.5c.5.4 1.1.7 1.8.7.9 0 1.4-.4 1.4-1 0-.6-.4-.9-1.3-1.2l-.6-.2c-.8-.3-1.4-.8-1.4-1.7 0-1 .8-1.8 2-1.8.8 0 1.4.2 1.9.7l-.6 1c-.4-.3-.8-.5-1.3-.5-.6 0-1 .3-1 .8 0 .5.4.7 1.2 1l.6.2c1 .4 1.6.9 1.6 1.9 0 1.2-.9 2-2.3 2-.9 0-1.7-.3-2.2-.8l.6-1.1Z" fill="#fff"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="PHP" title="PHP" aria-label="PHP" tabindex="0">
+                <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="6.5" fill="#777BB4"></ellipse><text x="12" y="14.5" text-anchor="middle" font-size="7.5" font-weight="800" fill="#fff" font-family="sans-serif">php</text></svg>
+              </span>
+              <span class="tech-icon" data-name="Java" title="Java" aria-label="Java" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#F89820" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h9v4a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4v-4Z"></path><path d="M15 13h2a2 2 0 0 1 0 4h-2"></path><path d="M9 8c0-1.2 1.5-1.5 1.5-3M12.5 8c0-1.2 1.5-1.5 1.5-3"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="Kotlin" title="Kotlin" aria-label="Kotlin" tabindex="0">
+                <svg viewBox="0 0 24 24"><path fill="#7F52FF" d="M4 4h16l-8 8 8 8H4V4Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="Python" title="Python" aria-label="Python" tabindex="0">
+                <svg viewBox="0 0 24 24"><path fill="#3776AB" d="M12 3c-3 0-2.8 1.3-2.8 1.3v1.4h2.9v.5H8c-1.5 0-2.8.9-2.8 3.2 0 2.3 1.1 3.1 2.4 3.1h1.2v-1.6c0-1.4 1.2-2.6 2.7-2.6h3.4c1.2 0 2.1-.9 2.1-2.1V5.2C17 3.9 15.8 3 12 3Zm-1.5 1.2a.6.6 0 1 1 0 1.2.6.6 0 0 1 0-1.2Z"></path><path fill="#FFD43B" d="M12 21c3 0 2.8-1.3 2.8-1.3v-1.4h-2.9v-.5H16c1.5 0 2.8-.9 2.8-3.2 0-2.3-1.1-3.1-2.4-3.1h-1.2v1.6c0 1.4-1.2 2.6-2.7 2.6H9.1c-1.2 0-2.1.9-2.1 2.1v1c0 1.3 1.2 2.2 5 2.2Zm1.5-1.2a.6.6 0 1 1 0-1.2.6.6 0 0 1 0 1.2Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="C" title="C" aria-label="C" tabindex="0">
+                <svg viewBox="0 0 24 24"><polygon points="12,2.5 20.5,7.2 20.5,16.8 12,21.5 3.5,16.8 3.5,7.2" fill="#283593"></polygon><path d="M15 9.5a3.8 3.8 0 1 0 0 5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"></path></svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Frontend -->
+          <div class="glass skill-group">
+            <h3 class="skill-group-title">Frontend</h3>
+            <div class="tech-icons">
+              <span class="tech-icon" data-name="React" title="React" aria-label="React" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#61DAFB" stroke-width="1.6"><circle cx="12" cy="12" r="2.1" fill="#61DAFB"></circle><ellipse cx="12" cy="12" rx="9.5" ry="3.8"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"></ellipse></svg>
+              </span>
+              <span class="tech-icon" data-name="Next.js" title="Next.js" aria-label="Next.js" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.6"></circle><path d="M9 16V8l7.5 9.5M15 8v5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="Tailwind CSS" title="Tailwind CSS" aria-label="Tailwind CSS" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="#38BDF8"><path d="M12 6c-2.7 0-4.3 1.3-5 4 1-1.3 2.2-1.8 3.5-1.5.8.2 1.3.7 1.9 1.3 1 1 2.1 2.2 4.6 2.2 2.7 0 4.3-1.3 5-4-1 1.3-2.2 1.8-3.5 1.5-.8-.2-1.3-.7-1.9-1.3C15.6 7.2 14.5 6 12 6Zm-5 6c-2.7 0-4.3 1.3-5 4 1-1.3 2.2-1.8 3.5-1.5.8.2 1.3.7 1.9 1.3 1 1 2.1 2.2 4.6 2.2 2.7 0 4.3-1.3 5-4-1 1.3-2.2 1.8-3.5 1.5-.8-.2-1.3-.7-1.9-1.3C10.6 13.2 9.5 12 7 12Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="Vite" title="Vite" aria-label="Vite" tabindex="0">
+                <svg viewBox="0 0 24 24"><path fill="#646CFF" d="M20.5 5 12 20 3.5 5 12 7.2 20.5 5Z"></path><path fill="#FFD62E" d="M14.5 3.5 9.8 11.2l2.6-.5-.9 4.8 4.8-6.8-2.6.5.8-5.7Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="HTML5" title="HTML5" aria-label="HTML5" tabindex="0">
+                <svg viewBox="0 0 24 24"><path fill="#E34F26" d="M4 3h16l-1.5 16.2L12 21l-6.5-1.8L4 3Z"></path><path fill="#fff" d="M7.5 7.5h9l-.3 2.2H9.8l.2 2.1h6l-.5 5.2-3.5 1-3.5-1-.2-2.6h2.2l.1 1.1 1.4.4 1.4-.4.2-1.8H8l-.5-6.2Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="CSS3" title="CSS3" aria-label="CSS3" tabindex="0">
+                <svg viewBox="0 0 24 24"><path fill="#1572B6" d="M4 3h16l-1.5 16.2L12 21l-6.5-1.8L4 3Z"></path><path fill="#fff" d="M7.5 7.5h9l-.4 2.2h-4l3.8 1.5-.4 5.8-3.5 1-3.5-1-.2-2.6h2.2l.1 1.1 1.4.4 1.4-.4.2-1.9H8.3l-.2-2.1h4.1l-4.5-1.8-.2-2.2Z"></path></svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Backend & data -->
+          <div class="glass skill-group">
+            <h3 class="skill-group-title">Backend &amp; data</h3>
+            <div class="tech-icons">
+              <span class="tech-icon" data-name="Supabase" title="Supabase" aria-label="Supabase" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="#3ECF8E"><path d="M13.5 3 5.5 13.5h6.2L10.5 21l8-10.5h-6.2L13.5 3Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="PostgreSQL" title="PostgreSQL" aria-label="PostgreSQL" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4D9DE0" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="6.5" rx="7" ry="3"></ellipse><path d="M5 6.5v11c0 1.66 3.13 3 7 3s7-1.34 7-3v-11"></path><path d="M5 12c0 1.66 3.13 3 7 3s7-1.34 7-3"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="MySQL" title="MySQL" aria-label="MySQL" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#00758F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16c2-5 5-8 9-8 3 0 5 1.8 7 4.5-1.5 0-2.8.5-3.5 1.5.5 1.2.2 2.5-.8 3.5-2.5-1-5-1.5-8-1.5H4Z"></path><circle cx="15" cy="11" r=".8" fill="#F29111" stroke="none"></circle></svg>
+              </span>
+              <span class="tech-icon" data-name="SQL Server" title="SQL Server" aria-label="SQL Server" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#CC2927" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1.5"></rect><rect x="4" y="10.5" width="16" height="5" rx="1.5"></rect><path d="M4 17h16v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="Node.js" title="Node.js" aria-label="Node.js" tabindex="0">
+                <svg viewBox="0 0 24 24"><polygon points="12,2.5 20.5,7.2 20.5,16.8 12,21.5 3.5,16.8 3.5,7.2" fill="none" stroke="#539E43" stroke-width="1.8"></polygon><text x="12" y="14.5" text-anchor="middle" font-size="7" font-weight="800" fill="#539E43" font-family="sans-serif">JS</text></svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="glass skill-group">
+            <h3 class="skill-group-title">Tools</h3>
+            <div class="tech-icons">
+              <span class="tech-icon" data-name="Git &amp; GitHub" title="Git &amp; GitHub" aria-label="Git &amp; GitHub" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5a9.5 9.5 0 0 0-3 18.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.2-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.2 9.2 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A9.5 9.5 0 0 0 12 2.5Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="Vercel" title="Vercel" aria-label="Vercel" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,4 21,19.5 3,19.5"></polygon></svg>
+              </span>
+              <span class="tech-icon" data-name="VS Code" title="VS Code" aria-label="VS Code" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="#007ACC"><path d="m17.5 3 3.5 1.7v14.6L17.5 21 8.5 13.7 4.7 16.6 3 15.7V8.3l1.7-.9 3.8 2.9L17.5 3Zm-.5 4.2-5.4 4.8 5.4 4.8V7.2Z"></path></svg>
+              </span>
+              <span class="tech-icon" data-name="IntelliJ IDEA" title="IntelliJ IDEA" aria-label="IntelliJ IDEA" tabindex="0">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3.5" fill="#1E1F22" stroke="#FE315D" stroke-width="1.4"></rect><text x="12" y="14" text-anchor="middle" font-size="8" font-weight="800" fill="#fff" font-family="sans-serif">IJ</text><line x1="7" y1="17.5" x2="13" y2="17.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"></line></svg>
+              </span>
+              <span class="tech-icon" data-name="Android Studio" title="Android Studio" aria-label="Android Studio" tabindex="0">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a7 7 0 0 1 14 0v5H5v-5Z"></path><path d="M8 7.5 6.5 5M16 7.5 17.5 5"></path><circle cx="9.5" cy="11.5" r=".8" fill="#3DDC84"></circle><circle cx="14.5" cy="11.5" r=".8" fill="#3DDC84"></circle></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: 03 PROJECTS -->
+    <section id="view-projects" class="view-panel" role="tabpanel">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker"><span class="num-pill">03</span><span>Projects</span></div>
+          <h2 class="section-title">Real products. Real <span class="gradient-text">businesses.</span></h2>
+        </div>
+
+        <article class="glass featured-card">
+          <div>
+            <span class="featured-badge">FEATURED</span>
+            <h3 class="project-title">MobiStock</h3>
+            <p class="project-desc">Inventory system for mobile phone and accessories shops.</p>
+            <ul class="checklist">
+              <li><span class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span>Stock levels and low-stock alerts</span></li>
+              <li><span class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span>Point-of-sale terminal</span></li>
+              <li><span class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span>Orders history</span></li>
+              <li><span class="check-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span>Sales analytics with revenue and profit</span></li>
+            </ul>
+
+            <div class="tech-icons" aria-label="MobiStock stack">
+              <span class="tech-icon tech-icon-sm" data-name="React" title="React" aria-label="React" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#61DAFB" stroke-width="1.6"><circle cx="12" cy="12" r="2.1" fill="#61DAFB"></circle><ellipse cx="12" cy="12" rx="9.5" ry="3.8"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"></ellipse></svg></span>
+              <span class="tech-icon tech-icon-sm" data-name="TypeScript" title="TypeScript" aria-label="TypeScript" tabindex="0"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="#3178C6"></rect><text x="12" y="15.5" text-anchor="middle" font-size="9" font-weight="800" fill="#fff" font-family="sans-serif">TS</text></svg></span>
+              <span class="tech-icon tech-icon-sm" data-name="Supabase" title="Supabase" aria-label="Supabase" tabindex="0"><svg viewBox="0 0 24 24" fill="#3ECF8E"><path d="M13.5 3 5.5 13.5h6.2L10.5 21l8-10.5h-6.2L13.5 3Z"></path></svg></span>
+              <span class="tech-icon tech-icon-sm" data-name="PostgreSQL" title="PostgreSQL" aria-label="PostgreSQL" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#4D9DE0" stroke-width="1.7"><ellipse cx="12" cy="6.5" rx="7" ry="3"></ellipse><path d="M5 6.5v11c0 1.66 3.13 3 7 3s7-1.34 7-3v-11"></path></svg></span>
+            </div>
+
+            <div class="project-links">
+              <a href="https://mobistock-nine.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live product →</a>
+            </div>
+          </div>
+
+          <div class="carousel" aria-roledescription="carousel" aria-label="MobiStock screenshots">
+            <div id="carousel-track" class="carousel-track">
+              <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/aida/ALJJyrB804Z2HUVRhWB_ieVQz16RGAbIqlk4xbYRiMdVNidMLZaNxvhtqYHNHzdn0Tr01OMJMQqMvA610qkx6R53ACDv1KpVjSQa6LIRRZimm0N7qrbLbCPQ6HLJQI98c1xF2QwAvn24OK-4iiLG2qpULO47B_S033v2--R7RXs7EYyOpitOhUnJ0qWSimazA9WDl1_Y8jjbEulYM_ZwSVckcYNZJqW2CcOTkuxCufbe6dJBFOSiIGjIiu2RhxyW2jQ" alt="MobiStock inventory levels and low-stock alerts" data-stitch-original-src="b13848a6c53b3b3f===images/mobistock_inventory.jpg"></div>
+              <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/aida/ALJJyrDiepinG9hOkhvuik-9E70lU5W2VvpYDgA6ggibMwG0zl2X9yG6gb04RoxpeGklVRCf70hWK3qdCZ9pjPscfARTf0XHUK7-Rn0nWlAKgGbj7CkB2k0plbfbuegN4GmoubpxJqx9t1YbbxQE1xQK2KFEAd4SGHp6eYzCc0BLNbwXWwux6anHyh2-bkYe7SCEt805KFXL3IAuJtz-pYUkxj_0cFkMOtC6Z2PTrkxg_DZkqFt2IeLt4_Y" alt="MobiStock point-of-sale terminal" data-stitch-original-src="b3352fa244e5f298===images/mobistock_pos.jpg"></div>
+              <div class="carousel-slide"><img src="https://lh3.googleusercontent.com/aida/ALJJyrAExsuS3S69if9d_A_Ibvrfm0WQHOorSwKlGdVM8i4Tn84ExgvhPfeVLqKd2NeHYFlnBDRKx1FXHhgmrcp62kNmET3bd9FtoEMTFYMBETMAlegUnDNiqZA8EMRc2VOBVGyUpp6kQ0x5VHhGIkxTfbSFI8uUmCXb3yPD2CLfbI5U11QkAbCwu_LoWGYelv4mWef3WrFC3hrzmpP_4eq2dl0JzHwuz6iafOVb95eGcLEe1mam1bp_Rjjqf-tpK34T" alt="MobiStock sales analytics with revenue and profit" data-stitch-original-src="00aee7ff54b10cfc===images/mobistock_analytics.jpg"></div>
+            </div>
+            <div class="carousel-bar">
+              <span id="carousel-caption" class="carousel-caption">Stock levels &amp; low-stock alerts</span>
+              <div class="carousel-controls">
+                <div class="carousel-dots" role="tablist" aria-label="Choose screenshot">
+                  <button class="carousel-dot" type="button" role="tab" aria-selected="true" aria-label="Slide 1" data-slide="0"></button>
+                  <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 2" data-slide="1"></button>
+                  <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Slide 3" data-slide="2"></button>
+                </div>
+                <button id="carousel-prev" class="carousel-btn" type="button" aria-label="Previous screenshot">‹</button>
+                <button id="carousel-next" class="carousel-btn" type="button" aria-label="Next screenshot">›</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="projects-grid">
+          <article class="glass project-card">
+            <div>
+              <span class="project-type">Live Web Product</span>
+              <h3 class="project-title">GGM (Google General Market)</h3>
+              <p class="project-desc">Marketplace with role-based access for Super Admins, Staff Admins and Customers.</p>
+            </div>
+            <div>
+              <div class="tech-icons" aria-label="GGM stack">
+                <span class="tech-icon tech-icon-sm" data-name="React" title="React" aria-label="React" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#61DAFB" stroke-width="1.6"><circle cx="12" cy="12" r="2.1" fill="#61DAFB"></circle><ellipse cx="12" cy="12" rx="9.5" ry="3.8"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"></ellipse></svg></span>
+                <span class="tech-icon tech-icon-sm" data-name="JavaScript" title="JavaScript" aria-label="JavaScript" tabindex="0"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="#F7DF1E"></rect><text x="12" y="15.5" text-anchor="middle" font-size="9" font-weight="800" fill="#111" font-family="sans-serif">JS</text></svg></span>
+                <span class="tech-icon tech-icon-sm" data-name="Supabase" title="Supabase" aria-label="Supabase" tabindex="0"><svg viewBox="0 0 24 24" fill="#3ECF8E"><path d="M13.5 3 5.5 13.5h6.2L10.5 21l8-10.5h-6.2L13.5 3Z"></path></svg></span>
+                <span class="tech-icon tech-icon-sm" data-name="PostgreSQL" title="PostgreSQL" aria-label="PostgreSQL" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#4D9DE0" stroke-width="1.7"><ellipse cx="12" cy="6.5" rx="7" ry="3"></ellipse><path d="M5 6.5v11c0 1.66 3.13 3 7 3s7-1.34 7-3v-11"></path></svg></span>
+              </div>
+              <div class="project-links">
+                <a href="http://ggm-platform.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Visit site →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass project-card">
+            <div>
+              <span class="project-type">SaaS · Web &amp; Desktop</span>
+              <h3 class="project-title">GameZone Management System</h3>
+              <p class="project-desc">SaaS for gaming centers with session billing and countdown timers, payments, owner reports, subscriptions, PWA and desktop installer, priced in Ethiopian Birr.</p>
+            </div>
+            <div>
+              <div class="tech-icons" aria-label="GameZone stack">
+                <span class="tech-icon tech-icon-sm" data-name="React" title="React" aria-label="React" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#61DAFB" stroke-width="1.6"><circle cx="12" cy="12" r="2.1" fill="#61DAFB"></circle><ellipse cx="12" cy="12" rx="9.5" ry="3.8"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"></ellipse></svg></span>
+                <span class="tech-icon tech-icon-sm" data-name="Supabase" title="Supabase" aria-label="Supabase" tabindex="0"><svg viewBox="0 0 24 24" fill="#3ECF8E"><path d="M13.5 3 5.5 13.5h6.2L10.5 21l8-10.5h-6.2L13.5 3Z"></path></svg></span>
+                <span class="tech-icon tech-icon-sm" data-name="Vercel" title="Vercel" aria-label="Vercel" tabindex="0"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12,4 21,19.5 3,19.5"></polygon></svg></span>
+                <span class="tech-icon tech-icon-sm" data-name="Electron" title="Electron" aria-label="Electron" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#9FEAF9" stroke-width="1.6"><circle cx="12" cy="12" r="2" fill="#9FEAF9"></circle><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(35 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-35 12 12)"></ellipse></svg></span>
+              </div>
+              <div class="project-links">
+                <a href="https://gamezone-supabase.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Visit site →</a>
+                <a href="https://github.com/NATIOPIA10/gamezone-supabase" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">Source</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass project-card">
+            <div>
+              <span class="project-type">Campus System</span>
+              <h3 class="project-title">Dilla University Incubation Center</h3>
+              <p class="project-desc">Student registration and approval, room and seat management, QR-code ID cards, project status tracking, event announcements.</p>
+            </div>
+            <div>
+              <div class="tech-icons" aria-label="Dilla Incubation stack">
+                <span class="tech-icon tech-icon-sm" data-name="React" title="React" aria-label="React" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#61DAFB" stroke-width="1.6"><circle cx="12" cy="12" r="2.1" fill="#61DAFB"></circle><ellipse cx="12" cy="12" rx="9.5" ry="3.8"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"></ellipse><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"></ellipse></svg></span>
+                <span class="tech-icon tech-icon-sm" data-name="Supabase" title="Supabase" aria-label="Supabase" tabindex="0"><svg viewBox="0 0 24 24" fill="#3ECF8E"><path d="M13.5 3 5.5 13.5h6.2L10.5 21l8-10.5h-6.2L13.5 3Z"></path></svg></span>
+                <span class="tech-icon tech-icon-sm" data-name="Telegram Bot" title="Telegram Bot" aria-label="Telegram Bot" tabindex="0"><svg viewBox="0 0 24 24" fill="#26A5E4"><path d="M21 4.5 3.6 11.2c-1.2.5-1.2 1.2-.2 1.5l4.4 1.4 10.3-6.5c.5-.3.9-.1.6.2l-8.4 7.6-.3 4.6c.4 0 .6-.2.9-.4l2.2-2.1 4.5 3.3c.8.5 1.4.2 1.6-.8L22.2 5.7c.3-1.2-.5-1.7-1.2-1.2Z"></path></svg></span>
+              </div>
+              <div class="project-links">
+                <a href="https://dilla-incubation.vercel.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Visit site →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass project-card">
+            <div>
+              <span class="project-type">Telegram Bot</span>
+              <h3 class="project-title">Telegram Movie &amp; Series Order Bot</h3>
+              <p class="project-desc">Users search a title, browse paged poster results, order and pay by Telebirr or bank transfer, send a payment screenshot; only the admin approves orders; series priced per episode range.</p>
+            </div>
+            <div class="tech-icons" aria-label="Movie Bot stack">
+              <span class="tech-icon tech-icon-sm" data-name="Python" title="Python" aria-label="Python" tabindex="0"><svg viewBox="0 0 24 24"><path fill="#3776AB" d="M12 3c-3 0-2.8 1.3-2.8 1.3v1.4h2.9v.5H8c-1.5 0-2.8.9-2.8 3.2 0 2.3 1.1 3.1 2.4 3.1h1.2v-1.6c0-1.4 1.2-2.6 2.7-2.6h3.4c1.2 0 2.1-.9 2.1-2.1V5.2C17 3.9 15.8 3 12 3Zm-1.5 1.2a.6.6 0 1 1 0 1.2.6.6 0 0 1 0-1.2Z"></path><path fill="#FFD43B" d="M12 21c3 0 2.8-1.3 2.8-1.3v-1.4h-2.9v-.5H16c1.5 0 2.8-.9 2.8-3.2 0-2.3-1.1-3.1-2.4-3.1h-1.2v1.6c0 1.4-1.2 2.6-2.7 2.6H9.1c-1.2 0-2.1.9-2.1 2.1v1c0 1.3 1.2 2.2 5 2.2Zm1.5-1.2a.6.6 0 1 1 0-1.2.6.6 0 0 1 0-1.2Z"></path></svg></span>
+              <span class="tech-icon tech-icon-sm" data-name="Telegram Bot" title="Telegram Bot" aria-label="Telegram Bot" tabindex="0"><svg viewBox="0 0 24 24" fill="#26A5E4"><path d="M21 4.5 3.6 11.2c-1.2.5-1.2 1.2-.2 1.5l4.4 1.4 10.3-6.5c.5-.3.9-.1.6.2l-8.4 7.6-.3 4.6c.4 0 .6-.2.9-.4l2.2-2.1 4.5 3.3c.8.5 1.4.2 1.6-.8L22.2 5.7c.3-1.2-.5-1.7-1.2-1.2Z"></path></svg></span>
+              <span class="tech-icon tech-icon-sm" data-name="Supabase" title="Supabase" aria-label="Supabase" tabindex="0"><svg viewBox="0 0 24 24" fill="#3ECF8E"><path d="M13.5 3 5.5 13.5h6.2L10.5 21l8-10.5h-6.2L13.5 3Z"></path></svg></span>
+              <span class="tech-icon tech-icon-sm" data-name="PostgreSQL" title="PostgreSQL" aria-label="PostgreSQL" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#4D9DE0" stroke-width="1.7"><ellipse cx="12" cy="6.5" rx="7" ry="3"></ellipse><path d="M5 6.5v11c0 1.66 3.13 3 7 3s7-1.34 7-3v-11"></path></svg></span>
+            </div>
+          </article>
+
+          <article class="glass project-card">
+            <div>
+              <span class="project-type">Android App</span>
+              <h3 class="project-title">GradeCalc</h3>
+              <p class="project-desc">Android app for Ethiopian university students; enter a mark from 0 to 100 and get the letter grade, semester GPA and CGPA on the 4.0 scale; all data stays on the device.</p>
+            </div>
+            <div class="tech-icons" aria-label="GradeCalc stack">
+              <span class="tech-icon tech-icon-sm" data-name="Kotlin" title="Kotlin" aria-label="Kotlin" tabindex="0"><svg viewBox="0 0 24 24"><path fill="#7F52FF" d="M4 4h16l-8 8 8 8H4V4Z"></path></svg></span>
+              <span class="tech-icon tech-icon-sm" data-name="Android" title="Android" aria-label="Android" tabindex="0"><svg viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a7 7 0 0 1 14 0v5H5v-5Z"></path><path d="M8 7.5 6.5 5M16 7.5 17.5 5"></path><circle cx="9.5" cy="11.5" r=".8" fill="#3DDC84"></circle><circle cx="14.5" cy="11.5" r=".8" fill="#3DDC84"></circle></svg></span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: 04 JOURNEY -->
+    <section id="view-journey" class="view-panel" role="tabpanel">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker"><span class="num-pill">04</span><span>Journey</span></div>
+          <h2 class="section-title">From first lines of code to <span class="gradient-text">live products.</span></h2>
+        </div>
+
+        <div class="journey-list">
+          <div class="glass journey-step"><span class="step-num">01</span><div><div class="step-head"><h3 class="step-title">Started coding</h3></div><p class="step-desc">Java and C fundamentals</p></div></div>
+          <div class="glass journey-step"><span class="step-num">02</span><div><div class="step-head"><h3 class="step-title">First projects</h3></div><p class="step-desc">Desktop apps in Java, web apps in PHP and MySQL</p></div></div>
+          <div class="glass journey-step"><span class="step-num">03</span><div><div class="step-head"><h3 class="step-title">Modern web stack</h3></div><p class="step-desc">React, TypeScript, Supabase</p></div></div>
+          <div class="glass journey-step"><span class="step-num">04</span><div><div class="step-head"><h3 class="step-title">Live products</h3></div><p class="step-desc">MobiStock, GGM, GameZone, Dilla Incubation Center</p></div></div>
+          <div class="glass journey-step is-now"><span class="step-num">05</span><div><div class="step-head"><h3 class="step-title">Building for clients</h3><span class="now-badge">Now</span></div><p class="step-desc">Telegram bots, an Android app, systems for Ethiopian businesses</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW: 05 CONTACT -->
+    <section id="view-contact" class="view-panel" role="tabpanel">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker"><span class="num-pill">05</span><span>Contact</span></div>
+          <h2 class="section-title">Got a business problem? <span class="gradient-text">Tell me</span> about it.</h2>
+          <p class="section-subtitle">Telegram is the fastest way to reach me.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="glass contact-card is-primary">
+            <span class="contact-label">Telegram · Fastest</span>
+            <div class="contact-items"><a href="https://t.me/NATIOPIA_10" target="_blank" rel="noopener noreferrer" class="contact-link">@NATIOPIA_10 →</a></div>
+            <p class="contact-note">Direct chat for project quotes and demos.</p>
+          </div>
+          <div class="glass contact-card">
+            <span class="contact-label">WhatsApp</span>
+            <div class="contact-items"><a href="https://wa.me/251984891542" target="_blank" rel="noopener noreferrer" class="contact-link">0984 891 542 →</a></div>
+            <p class="contact-note">Available for voice notes and quick calls.</p>
+          </div>
+          <div class="glass contact-card">
+            <span class="contact-label">Email</span>
+            <div class="contact-items">
+              <a href="mailto:natnaeltsedeke10@gmail.com" class="contact-link">natnaeltsedeke10@gmail.com</a>
+              <a href="mailto:natnael.tsedeke@du.edu.et" class="contact-link">natnael.tsedeke@du.edu.et</a>
+              <a href="mailto:contact@natnaeltsedeke.dev" class="contact-link">contact@natnaeltsedeke.dev</a>
+            </div>
+          </div>
+          <div class="glass contact-card">
+            <span class="contact-label">Phone</span>
+            <div class="contact-items">
+              <a href="tel:+251984891542" class="contact-link">+251 984 891 542</a>
+              <a href="tel:+251916891542" class="contact-link">+251 916 891 542</a>
+            </div>
+          </div>
+          <div class="glass contact-card">
+            <span class="contact-label">GitHub</span>
+            <div class="contact-items">
+              <a href="https://github.com/NATIOPIA10" target="_blank" rel="noopener noreferrer" class="contact-link">github.com/NATIOPIA10 →</a>
+              <a href="https://github.com/NATIOPIA" target="_blank" rel="noopener noreferrer" class="contact-link">github.com/NATIOPIA →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Natnael Tsedeke · Dilla University, Ethiopia</span>
+      <span>Built for Ethiopia</span>
+    </div>
+  </footer>
+
+  <div class="floating-dock" aria-label="Quick actions">
+    <a href="https://t.me/NATIOPIA_10" target="_blank" rel="noopener noreferrer" class="fab" aria-label="Message on Telegram" title="Message on Telegram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+    </a>
+  </div>
+
+  <div id="cv-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+    <div class="glass modal-card">
+      <div class="modal-head">
+        <h3 id="cv-modal-title" class="modal-title">Natnael Tsedeke — CV</h3>
+        <button id="close-cv" class="icon-btn" type="button" aria-label="Close CV dialog">×</button>
+      </div>
+      <p class="about-body">BSc Computer Science student at Dilla University &amp; Full-Stack Developer building web, Telegram, and Android systems for Ethiopian businesses.</p>
+      <p class="about-body">Need the PDF copy for your team or HR? Message me on Telegram and I&#39;ll send the latest version right away.</p>
+      <div class="project-links">
+        <a href="https://t.me/NATIOPIA_10" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Request CV on Telegram →</a>
+        <button id="close-cv-secondary" type="button" class="btn btn-ghost btn-sm">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var themeToggle = document.getElementById('theme-toggle');
+      var sunIcon = document.getElementById('theme-icon-sun');
+      var moonIcon = document.getElementById('theme-icon-moon');
+
+      function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        var isLight = theme === 'light';
+        sunIcon.style.display = isLight ? 'none' : 'block';
+        moonIcon.style.display = isLight ? 'block' : 'none';
+        themeToggle.setAttribute('aria-pressed', String(isLight));
+        themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark theme' : 'Switch to light theme');
+        try { localStorage.setItem('nt_theme', theme); } catch (e) {}
+      }
+
+      try {
+        var savedTheme = localStorage.getItem('nt_theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') applyTheme(savedTheme);
+      } catch (e) {}
+
+      themeToggle.addEventListener('click', function () {
+        applyTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+      });
+
+      // Click-to-open view switching
+      var panels = document.querySelectorAll('.view-panel');
+      var navTabs = document.querySelectorAll('.nav-links .nav-tab');
+      var triggers = document.querySelectorAll('[data-view-target]');
+      var mobileNav = document.getElementById('mobile-nav');
+      var menuToggle = document.getElementById('menu-toggle');
+
+      function openView(name) {
+        panels.forEach(function (p) {
+          p.classList.toggle('is-active', p.id === 'view-' + name);
+        });
+        navTabs.forEach(function (tab) {
+          tab.setAttribute('aria-selected', String(tab.getAttribute('data-view-target') === name));
+        });
+        mobileNav.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      triggers.forEach(function (el) {
+        el.addEventListener('click', function () {
+          openView(el.getAttribute('data-view-target'));
+        });
+      });
+
+      menuToggle.addEventListener('click', function () {
+        var open = mobileNav.classList.toggle('is-open');
+        menuToggle.setAttribute('aria-expanded', String(open));
+      });
+
+      // MobiStock screenshot carousel
+      var track = document.getElementById('carousel-track');
+      var captionEl = document.getElementById('carousel-caption');
+      var dots = Array.prototype.slice.call(document.querySelectorAll('#view-projects .carousel-dot'));
+      var captions = [
+        'Stock levels & low-stock alerts',
+        'Point-of-sale terminal',
+        'Sales analytics with revenue and profit'
+      ];
+      var activeSlide = 0;
+
+      function goToSlide(index) {
+        activeSlide = (index + captions.length) % captions.length;
+        track.style.transform = 'translateX(-' + (activeSlide * 100) + '%)';
+        captionEl.textContent = captions[activeSlide];
+        dots.forEach(function (dot, i) {
+          dot.setAttribute('aria-selected', String(i === activeSlide));
+        });
+      }
+
+      document.getElementById('carousel-prev').addEventListener('click', function () { goToSlide(activeSlide - 1); });
+      document.getElementById('carousel-next').addEventListener('click', function () { goToSlide(activeSlide + 1); });
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () { goToSlide(Number(dot.getAttribute('data-slide'))); });
+      });
+
+      // Home Best Products Dual-Device Showcase Carousel (auto + manual)
+      var showcaseEl = document.getElementById('showcase-carousel');
+      var showcaseTrack = document.getElementById('showcase-track');
+      var showcaseBadge = document.getElementById('showcase-badge');
+      var showcaseName = document.getElementById('showcase-name');
+      var showcaseLink = document.getElementById('showcase-link');
+      var showcaseDots = Array.prototype.slice.call(document.querySelectorAll('.showcase-dot'));
+      var showcaseItems = [
+        { badge: 'FEATURED', name: 'MobiStock', url: 'https://mobistock-nine.vercel.app' },
+        { badge: 'SAAS · WEB & DESKTOP', name: 'GameZone Management System', url: 'https://gamezone-supabase.vercel.app' },
+        { badge: 'CAMPUS SYSTEM', name: 'Dilla University Incubation Center', url: 'https://dilla-incubation.vercel.app' }
+      ];
+      var activeShowcase = 0;
+      var showcaseTimer = null;
+
+      function goToShowcase(index) {
+        activeShowcase = (index + showcaseItems.length) % showcaseItems.length;
+        showcaseTrack.style.transform = 'translateX(-' + (activeShowcase * 100) + '%)';
+        var item = showcaseItems[activeShowcase];
+        showcaseBadge.textContent = item.badge;
+        showcaseName.textContent = item.name;
+        showcaseLink.href = item.url;
+        showcaseDots.forEach(function (dot, i) {
+          dot.setAttribute('aria-selected', String(i === activeShowcase));
+        });
+      }
+
+      function startShowcaseAuto() {
+        stopShowcaseAuto();
+        showcaseTimer = setInterval(function () {
+          goToShowcase(activeShowcase + 1);
+        }, 4500);
+      }
+
+      function stopShowcaseAuto() {
+        if (showcaseTimer) {
+          clearInterval(showcaseTimer);
+          showcaseTimer = null;
+        }
+      }
+
+      document.getElementById('showcase-prev').addEventListener('click', function () {
+        goToShowcase(activeShowcase - 1);
+        startShowcaseAuto();
+      });
+      document.getElementById('showcase-next').addEventListener('click', function () {
+        goToShowcase(activeShowcase + 1);
+        startShowcaseAuto();
+      });
+      showcaseDots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          goToShowcase(Number(dot.getAttribute('data-showcase')));
+          startShowcaseAuto();
+        });
+      });
+      showcaseEl.addEventListener('mouseenter', stopShowcaseAuto);
+      showcaseEl.addEventListener('mouseleave', startShowcaseAuto);
+      if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        startShowcaseAuto();
+      }
+
+      // CV Modal
+      var cvModal = document.getElementById('cv-modal');
+      var openCvBtn = document.getElementById('open-cv');
+      function closeCv() { cvModal.classList.remove('is-open'); openCvBtn.focus(); }
+      openCvBtn.addEventListener('click', function () { cvModal.classList.add('is-open'); });
+      document.getElementById('close-cv').addEventListener('click', closeCv);
+      document.getElementById('close-cv-secondary').addEventListener('click', closeCv);
+      cvModal.addEventListener('click', function (e) { if (e.target === cvModal) closeCv(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && cvModal.classList.contains('is-open')) closeCv(); });
+    })();
+  </script>
+
+
+</body></html>
