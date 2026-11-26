@@ -53,11 +53,10 @@ export function AboutView({ onNavigate }: AboutViewProps) {
           <div className="glass p-7 flex flex-col justify-between gap-5">
             <div>
               <p className="m-0 mb-2.5 text-[1.2rem] font-semibold leading-[1.5]">
-                I&apos;m a Computer Science student at Dilla University and a full-stack developer.
+                I&apos;m a full-stack web and app developer.
               </p>
               <p className="m-0 text-[var(--text-muted)] text-[0.96rem] leading-[1.6]">
-                I turn paper records and spreadsheets into simple systems that work: stock, sales,
-                bookings, approvals. Fast to use, built around how your team actually works.
+                I build websites, Android apps and Telegram bots for businesses in Ethiopia. Simple to use, and made to fit your work. I'm finishing my BSc in Computer Science at Dilla University.
               </p>
             </div>
 
