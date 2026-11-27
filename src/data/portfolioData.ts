@@ -28,36 +28,61 @@ export type TechKey =
   | 'android';
 
 export const IMAGES = {
-  portrait:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCtWY0cxS5KpEwpCPuhS9Yq_71fej_wws9BKcsMafwu8TdSLO53WTaMNul0__T5nAtmNbZGLN1dGLWMYznF9xUdjAcr7dgMSgEDoaEPKiunrJwqlt4X39tw0TvzuO8Pz7iAZm84CIPUUT-Ow12ThBH6xsr7lYKIs_itruPJLnSn5ISxC8B3Tz98JSbiGDIimM2bqXL8mNyfy2HkjR8MtqD-9SgUuG1UjK0pDQeCcnsA2GOBNYsHLnDz6Qts',
-  mobistockInventory:
-    'https://lh3.googleusercontent.com/aida/ALJJyrB804Z2HUVRhWB_ieVQz16RGAbIqlk4xbYRiMdVNidMLZaNxvhtqYHNHzdn0Tr01OMJMQqMvA610qkx6R53ACDv1KpVjSQa6LIRRZimm0N7qrbLbCPQ6HLJQI98c1xF2QwAvn24OK-4iiLG2qpULO47B_S033v2--R7RXs7EYyOpitOhUnJ0qWSimazA9WDl1_Y8jjbEulYM_ZwSVckcYNZJqW2CcOTkuxCufbe6dJBFOSiIGjIiu2RhxyW2jQ',
-  mobistockMobile:
-    'https://lh3.googleusercontent.com/aida/ALJJyrBlMBP1DLDaPhaYZFAgexKfYUBvWBJ2DPQimOdIGgLMog9fe5UGX5Cs9aPb_c5rQrYQ3kMzOPPmaGmW4RxTUJvOJmGqV7PlEF1QOs_eLCulATi4IocrUNSSJJOvdYNQ1FsdSOCBBgUl4nxhw93l0ftnPbYmQ76lXDlZOG3qYGukCVP4SMpXv1tr3it0dGioLz9bJCWzYGuiwYDMS1_kz-DCQw93F3E3tz7NykuzQtTP9d-kzHs7mcucXjpP',
-  mobistockPos:
-    'https://lh3.googleusercontent.com/aida/ALJJyrDiepinG9hOkhvuik-9E70lU5W2VvpYDgA6ggibMwG0zl2X9yG6gb04RoxpeGklVRCf70hWK3qdCZ9pjPscfARTf0XHUK7-Rn0nWlAKgGbj7CkB2k0plbfbuegN4GmoubpxJqx9t1YbbxQE1xQK2KFEAd4SGHp6eYzCc0BLNbwXWwux6anHyh2-bkYe7SCEt805KFXL3IAuJtz-pYUkxj_0cFkMOtC6Z2PTrkxg_DZkqFt2IeLt4_Y',
-  mobistockAnalytics:
-    'https://lh3.googleusercontent.com/aida/ALJJyrAExsuS3S69if9d_A_Ibvrfm0WQHOorSwKlGdVM8i4Tn84ExgvhPfeVLqKd2NeHYFlnBDRKx1FXHhgmrcp62kNmET3bd9FtoEMTFYMBETMAlegUnDNiqZA8EMRc2VOBVGyUpp6kQ0x5VHhGIkxTfbSFI8uUmCXb3yPD2CLfbI5U11QkAbCwu_LoWGYelv4mWef3WrFC3hrzmpP_4eq2dl0JzHwuz6iafOVb95eGcLEe1mam1bp_Rjjqf-tpK34T',
-  gamezoneDesktop:
-    'https://lh3.googleusercontent.com/aida/ALJJyrDD7ftNmIZ3-9P5-jw2vHRPRhCEmr_WObKVMln40ErLMscIRoFw50oTaudGd1KjOPbvfqBDXIkGmLY2KfJuk-Hcu1dP4-h2qIW3vSoQLBsmkUN_6FfMODMg9iOcYb_CQKeEJyJxdgqQJj0SqwyxmdnsYSX-ffZeClHDWPGK7jqrxQIlgZdMEnRazt74WBOwD-2xAdS1E37ZUoxmiZtjrfu0IQW9_XHdfvHVLc5EEWgx40B8gJsXefW_eLAy',
-  gamezoneMobile:
-    'https://lh3.googleusercontent.com/aida/ALJJyrBCHRA8Xx1EEEu9DXd1hMp8AvvJ8xL1GUvHQ4yp__6vlduZKTIfnF7zgegkfQPohLzQw7rq_vlCZU736Qkn5mxeTIfcfRAwQQJ9deVmZ20QYJf5qbsb7FwhAySl6Xe-rH0D760a5I-w7wW9WJ5GAWJwpGJAXVgFfyBckHnZvDaOZ7ghp6_qvL3SSsjPN8fNkzksCRUVN3PioPTvdHx6JmNQAgdmtYG-XtxPuJT8M-kfXOk-MLnuB0Jz1cY',
-  dillaDesktop:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCwlZ0pqMMAIE7y2nkOpYSFUagH8Gjv2ugItNi4lSobqRH6K7cKx_T30nhWPDFcdG1fidR5IlEbYQ_9ghlnOKGzkEdKPxvrsjGakNORufCnfSgP5MFIaX9BA0FKQczFjzv1a7kbMez0K5bFjrDq4Ua0JjiniFkVXDB4ugoolqO2ER53aZfT77tHSNHwj3sHHuvIL97P-R7hr2WTJzYuY0ZYI2gl3kLGlZrI0UDSa1nYhEs7dBGGGNiA',
-  dillaMobile:
-    'https://lh3.googleusercontent.com/aida/ALJJyrB3DgGxsi29-WO74E_d6D0PVrxBcqsTIiPq65ClJuXflk34D4bjpnTDvjDHoWi4Y5hBzcALoJW961NmpQlNElawgufKOYZ1tapCNgZ5I-N9wUo4zllUp1YSsy1JJnCdsZ144tOwBEuVzbMpl98wr0mm8dauAOve3PZp8YawMqfDQrWZ2PB0oHy5YiDOSr26tKeMuZoEA0ljKgcxYCB4zRuidHHGhOXZldcWuIgO3obWyLZJJnJd8w',
-  ggmDesktop:
-    'https://lh3.googleusercontent.com/aida/ALJJyrDaP9kG3-LSUPLxJEp0DrilnU4Y7yFRCu98eJXoF_DOzNcJsmRf-SR3Sf8T7iD3SH4uxUUL6hr5z9RI0fGkoMuwG3EQfjzYIf4Whg3XrN3m_zgNUJm7ER5I9Yv34zWIAUH5WNZAOixBo962Mtx1sAZPeKlGvQhS88qn_5RffIl0gbn8tjgqVZ58p_0vHDyltPcBT7tPS6C1iOetqmzOddzNBGvxngsLiYYOVGifNFRVGX8vL-E',
-  ggmMobile:
-    'https://lh3.googleusercontent.com/aida/ALJJyrAalxxctC_UH0fGFOYy3BWmHKcwqky6QYVQhFlhH52Vmg_aVg5X3R--hp1G0wp5TxUOOQuSTPgfCfzCZ8DG-tgJQY2oK4VsY4_kxtIAitEXT_pWPy_tRBlydBlSPxpxDMVCKqbayHCSn-VUOefVNrBuVjRhXD1cv9kk7PfemS4dLgx4mg5VxLZChIEoIkjE-FuPF5WE61LarxMZvd-hSLqHkfRCdDTFbw20s5Ffyw6etroKFcw',
-  moviebotDesktop:
-    'https://lh3.googleusercontent.com/aida/ALJJyrBiwDF2OlB2n68IZxEl0EBaapQRGIYPypc2MeKvvvCNotcRdaToeONY3UZdGYQHMhGmRUs9g49ufKywKB3FBqrjzcXxk-bpBwM2bpJzFHpbX064PKnN2Caqs6xk6dSaXSVchQPDRsg0s_U7D5KGxEqlKl3VZRT4AbthKJirnFgokGK9wLLaV-JJ68f5k3_NqrTAHsVH1KmD5idjm6jSClapAdFrA7vYQFI9DWkaMGN8aWrODul5kuGTs16G',
-  moviebotMobile:
-    'https://lh3.googleusercontent.com/aida/ALJJyrBrBRARQ8Lte_Se6eOW2D_21tuCzkaMH_Izr078YFYP6AN32p6zAUGxHxh4pG9rpifE7c_-lFfJWRvQv1P0KtpXsPMFHPsXTuJrQr8WGpK23YNTOnygs91Gsyd0051KHDJIpCL1bPokkWePe85ROeITK10BKm_Sn4W1kqvlB7ZR95Sh_pNIvfLfq4t0aU0pVfem8CxBamxyN48C7BqKKXMwjHA5z9Rc3JLsjFkLWMjNt4PLiLk_hWX6LYs',
-  gradecalcDesktop:
-    'https://lh3.googleusercontent.com/aida/ALJJyrDTkQeB2SM1lPddxgLNKbKFUdiGHw__O3yrsbR8TowAR84CFXj1zjzvlx-PLbwsAuREIbiFY-GKIzsAaZw-9rNE50fMHHKwSc_8xyCLm9M1GbDLDEP2NqdiPdy5kOd_jtaNtoaVhRWdmLZZO22aw7Z74l-jSkyqhlrbPr405djL96pt-cQwxQBuXk5TDsg2QyvTJ0-QlhQlh32cMcGqX3UILX9hv_t8lc4309vR8JBAUZKF9borWhAnDc5obQ',
-  gradecalcMobile:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCZxqF6vZ1tUiass7bcIOclLhG0aLale9gqEGi4JPm62fFNP7wPSKkO73UZVhFvq3hXxvcYQFkYC5V7E9EfYm1o2XDZ8NI6vRmxP_avCz4gfLADe8TDet-vW8OHwvtzZ_fQKSzleE2ZsyT-6gsuThBTYR43s2v8zLQFLwmIK7v_GcmrrIIDiHU7yqYm8FZ8YQfMZGWJj1VHzlnJM6KHLSfkqjRczF6JhZ6FLGOiLnmNpc7gl_0TvN-6beAi',
+  portrait: '/assets/aistudio/photo_2026-11-26_17-40-32_0b38a4f0.jpg',
+  mobistockDashboard: '/assets/aistudio/Screenshot_2026-11-26_174337_3490a98d.png',
+  mobistockInventory: '/assets/aistudio/Screenshot_2026-11-26_174352_0f5c4fe9.png',
+  mobistockMobile: '/assets/aistudio/Screenshot_2026-11-26_174516_11f0ee88.png',
+  mobistockInventoryMobile: '/assets/aistudio/Screenshot_2026-11-26_174534_23cbbe2c.png',
+  mobistockPos: '/assets/aistudio/Screenshot_2026-11-26_174405_79b63349.png',
+  mobistockPosMobile: '/assets/aistudio/Screenshot_2026-11-26_174552_a7fd7ef3.png',
+  mobistockAnalytics: '/assets/aistudio/Screenshot_2026-11-26_174420_bc930b3d.png',
+  mobistockAnalyticsMobile: '/assets/aistudio/Screenshot_2026-11-26_174616_0249f5c4.png',
+  gamezoneDesktop: '/assets/aistudio/Screenshot_2026-11-26_180458_939834e4.png',
+  gamezoneGames: '/assets/aistudio/Screenshot_2026-11-26_180511_fd2ab6e3.png',
+  gamezoneSessions: '/assets/aistudio/Screenshot_2026-11-26_180531_caf048df.png',
+  gamezoneEarnings: '/assets/aistudio/Screenshot_2026-11-26_180550_69b8f264.png',
+  gamezoneSubscription: '/assets/aistudio/Screenshot_2026-11-26_180650_1efd0a10.png',
+  gamezoneMobile: '/assets/aistudio/Screenshot_2026-11-26_180900_763ae070.png',
+  gamezoneGamesMobile: '/assets/aistudio/Screenshot_2026-11-26_181009_5f8a410d.png',
+  gamezoneSessionsMobile: '/assets/aistudio/Screenshot_2026-11-26_181021_7787fb4f.png',
+  gamezoneEarningsMobile: '/assets/aistudio/Screenshot_2026-11-26_181037_301200fa.png',
+  gamezoneSubscriptionMobile: '/assets/aistudio/Screenshot_2026-11-26_181055_4c6d6f17.png',
+  dillaHome: '/assets/aistudio/Screenshot_2026-11-26_181253_256e669d.png',
+  dillaDesktop: '/assets/aistudio/Screenshot_2026-11-26_181320_8ecd1822.png',
+  dillaStudent: '/assets/aistudio/Screenshot_2026-11-26_181342_b2f31dad.png',
+  dillaShowcase: '/assets/aistudio/Screenshot_2026-11-26_181412_839a2e28.png',
+  dillaHomeMobile: '/assets/aistudio/Screenshot_2026-11-26_181513_721fdd58.png',
+  dillaMobile: '/assets/aistudio/Screenshot_2026-11-26_181539_fdec0276.png',
+  dillaStudentMobile: '/assets/aistudio/Screenshot_2026-11-26_181604_a5a954d7.png',
+  dillaShowcaseMobile: '/assets/aistudio/Screenshot_2026-11-26_181618_df16258c.png',
+  ggmDesktop: '/assets/aistudio/Screenshot_2026-11-27_104550_e7d98c08.png',
+  ggmCustomerHome: '/assets/aistudio/Screenshot_2026-11-27_104613_1f5ec298.png',
+  ggmCustomerOrders: '/assets/aistudio/Screenshot_2026-11-27_104633_3a9289e3.png',
+  ggmSellerOverview: '/assets/aistudio/Screenshot_2026-11-27_104655_ba91fd8d.png',
+  ggmSellerOrders: '/assets/aistudio/Screenshot_2026-11-27_104710_c46ca759.png',
+  ggmAdminOverview: '/assets/aistudio/Screenshot_2026-11-27_104323_a623d1e6.png',
+  ggmAdminSellers: '/assets/aistudio/Screenshot_2026-11-27_104526_89b12984.png',
+  ggmAdminUsers: '/assets/aistudio/Screenshot_2026-11-27_104434_1f93265f.png',
+  ggmMobile: '/assets/aistudio/Screenshot_2026-11-27_104806_afbea431.png',
+  ggmCustomerHomeMobile: '/assets/aistudio/Screenshot_2026-11-27_104950_dd14cbac.png',
+  ggmCustomerOrdersMobile: '/assets/aistudio/Screenshot_2026-11-27_105003_32f6c22e.png',
+  ggmSellerOverviewMobile: '/assets/aistudio/Screenshot_2026-11-27_105028_cfd23edd.png',
+  ggmSellerOrdersMobile: '/assets/aistudio/Screenshot_2026-11-27_105042_609248f3.png',
+  ggmAdminOverviewMobile: '/assets/aistudio/Screenshot_2026-11-27_104832_a1099859.png',
+  ggmAdminSellersMobile: '/assets/aistudio/Screenshot_2026-11-27_104911_fe7bd3c9.png',
+  ggmAdminUsersMobile: '/assets/aistudio/Screenshot_2026-11-27_104843_bf4aeb17.png',
+  moviebotDesktop: '/assets/aistudio/Screenshot_2026-11-27_105508_88ad7025_blurred.png',
+  moviebotSeries: '/assets/aistudio/Screenshot_2026-11-27_105533_f93f7ff0_blurred.png',
+  moviebotPayment: '/assets/aistudio/Screenshot_2026-11-27_105643_86fc4eb8_blurred.png',
+  moviebotMobile: '/assets/aistudio/Screenshot_2026-11-27_105751_fc1fe54b.png',
+  moviebotSeriesMobile: '/assets/aistudio/Screenshot_2026-11-27_105810_1f734a80.png',
+  moviebotPaymentMobile: '/assets/aistudio/Screenshot_2026-11-27_105826_30555d96.png',
+  gradecalcMobile: '/assets/aistudio/Screenshot_2026-11-27_110902_788e92b7.png',
+  gradecalcSemester: '/assets/aistudio/Screenshot_2026-11-27_110921_1e5720b1.png',
+  gradecalcTarget: '/assets/aistudio/Screenshot_2026-11-27_110938_a4a67b93.png',
+  gradecalcSettings: '/assets/aistudio/Screenshot_2026-11-27_111014_cfc73c94.png',
+  gradecalcNewSemester: '/assets/aistudio/Screenshot_2026-11-27_111032_d08467d2.png',
+  gradecalcAddCourse: '/assets/aistudio/Screenshot_2026-11-27_111051_f390bcc7.png',
 } as const;
 
 export const HOME_CORE_TECH: TechKey[] = [
@@ -158,10 +183,14 @@ export const PROJECTS: ProjectItem[] = [
     live: 'https://mobistock-nine.vercel.app',
     stack: ['react', 'typescript', 'supabase', 'postgres'],
     slides: [
-      { src: IMAGES.mobistockInventory, label: 'Desktop · Inventory & Low-Stock Alerts' },
-      { src: IMAGES.mobistockMobile, label: 'Mobile · Quick Stock & Sales' },
+      { src: IMAGES.mobistockDashboard, label: 'Desktop · Overview & Low-Stock Alerts' },
+      { src: IMAGES.mobistockMobile, label: 'Mobile · Dashboard Overview' },
+      { src: IMAGES.mobistockInventory, label: 'Desktop · Inventory Management' },
+      { src: IMAGES.mobistockInventoryMobile, label: 'Mobile · Inventory Management' },
       { src: IMAGES.mobistockPos, label: 'Desktop · Point-of-Sale Terminal' },
+      { src: IMAGES.mobistockPosMobile, label: 'Mobile · POS Terminal' },
       { src: IMAGES.mobistockAnalytics, label: 'Desktop · Revenue & Profit Analytics' },
+      { src: IMAGES.mobistockAnalyticsMobile, label: 'Mobile · Sales Analytics' },
     ],
   },
   {
@@ -175,8 +204,22 @@ export const PROJECTS: ProjectItem[] = [
     live: 'http://ggm-platform.vercel.app',
     stack: ['react', 'javascript', 'supabase', 'postgres'],
     slides: [
-      { src: IMAGES.ggmDesktop, label: 'Desktop · Marketplace & Admin Portal' },
-      { src: IMAGES.ggmMobile, label: 'Mobile · Customer Storefront' },
+      { src: IMAGES.ggmDesktop, label: 'Desktop · Marketplace Landing' },
+      { src: IMAGES.ggmMobile, label: 'Mobile · Marketplace Landing' },
+      { src: IMAGES.ggmCustomerHome, label: 'Desktop · Customer Discovery Feed' },
+      { src: IMAGES.ggmCustomerHomeMobile, label: 'Mobile · Customer Discovery Feed' },
+      { src: IMAGES.ggmCustomerOrders, label: 'Desktop · Customer Order Timeline' },
+      { src: IMAGES.ggmCustomerOrdersMobile, label: 'Mobile · Customer Order Timeline' },
+      { src: IMAGES.ggmSellerOverview, label: 'Desktop · Seller Dashboard & Revenue' },
+      { src: IMAGES.ggmSellerOverviewMobile, label: 'Mobile · Seller Dashboard & Revenue' },
+      { src: IMAGES.ggmSellerOrders, label: 'Desktop · Seller Order Fulfillment' },
+      { src: IMAGES.ggmSellerOrdersMobile, label: 'Mobile · Seller Order Fulfillment' },
+      { src: IMAGES.ggmAdminOverview, label: 'Desktop · Admin Platform Overview' },
+      { src: IMAGES.ggmAdminOverviewMobile, label: 'Mobile · Admin Platform Overview' },
+      { src: IMAGES.ggmAdminSellers, label: 'Desktop · Admin Seller Verification' },
+      { src: IMAGES.ggmAdminSellersMobile, label: 'Mobile · Admin Seller Verification' },
+      { src: IMAGES.ggmAdminUsers, label: 'Desktop · Admin User Management' },
+      { src: IMAGES.ggmAdminUsersMobile, label: 'Mobile · Admin User Management' },
     ],
   },
   {
@@ -191,8 +234,16 @@ export const PROJECTS: ProjectItem[] = [
     source: 'https://github.com/NATIOPIA10/gamezone-supabase',
     stack: ['react', 'supabase', 'vercel', 'electron'],
     slides: [
-      { src: IMAGES.gamezoneDesktop, label: 'Desktop · Session Timers & ETB Billing' },
-      { src: IMAGES.gamezoneMobile, label: 'Mobile · PWA Control Panel' },
+      { src: IMAGES.gamezoneDesktop, label: 'Desktop · Owner Dashboard' },
+      { src: IMAGES.gamezoneMobile, label: 'Mobile · Owner Dashboard' },
+      { src: IMAGES.gamezoneGames, label: 'Desktop · Game Management & Pricing' },
+      { src: IMAGES.gamezoneGamesMobile, label: 'Mobile · Game Management & Pricing' },
+      { src: IMAGES.gamezoneSessions, label: 'Desktop · Live Session Timers' },
+      { src: IMAGES.gamezoneSessionsMobile, label: 'Mobile · Live Session Timers' },
+      { src: IMAGES.gamezoneEarnings, label: 'Desktop · Earnings & Reports' },
+      { src: IMAGES.gamezoneEarningsMobile, label: 'Mobile · Earnings & Reports' },
+      { src: IMAGES.gamezoneSubscription, label: 'Desktop · ETB SaaS Subscription Plans' },
+      { src: IMAGES.gamezoneSubscriptionMobile, label: 'Mobile · ETB SaaS Subscription Plans' },
     ],
   },
   {
@@ -206,8 +257,14 @@ export const PROJECTS: ProjectItem[] = [
     live: 'https://dilla-incubation.vercel.app',
     stack: ['react', 'supabase', 'telegram'],
     slides: [
-      { src: IMAGES.dillaDesktop, label: 'Desktop · Campus Incubation Portal' },
-      { src: IMAGES.dillaMobile, label: 'Mobile · QR-Code Student ID Pass' },
+      { src: IMAGES.dillaHome, label: 'Desktop · Incubation Center Portal' },
+      { src: IMAGES.dillaHomeMobile, label: 'Mobile · Incubation Center Portal' },
+      { src: IMAGES.dillaDesktop, label: 'Desktop · Admin Overview & Room Occupancy' },
+      { src: IMAGES.dillaMobile, label: 'Mobile · Admin Overview & Room Occupancy' },
+      { src: IMAGES.dillaStudent, label: 'Desktop · Student Portal & Telegram Link' },
+      { src: IMAGES.dillaStudentMobile, label: 'Mobile · Student Portal & ID Card' },
+      { src: IMAGES.dillaShowcase, label: 'Desktop · Verified Project Showcase' },
+      { src: IMAGES.dillaShowcaseMobile, label: 'Mobile · Verified Project Showcase' },
     ],
   },
   {
@@ -220,8 +277,12 @@ export const PROJECTS: ProjectItem[] = [
       'Users search titles, browse paged poster results, pay via Telebirr or bank transfer, and admins approve orders; series priced per episode range.',
     stack: ['python', 'telegram', 'supabase', 'postgres'],
     slides: [
-      { src: IMAGES.moviebotDesktop, label: 'Telegram Desktop · Search & Admin Approval' },
-      { src: IMAGES.moviebotMobile, label: 'Telegram Mobile · Order & Telebirr Pay' },
+      { src: IMAGES.moviebotDesktop, label: 'Telegram Desktop · Movie Catalog & Buy Flow' },
+      { src: IMAGES.moviebotMobile, label: 'Telegram Mobile · Movie Catalog & Buy Flow' },
+      { src: IMAGES.moviebotSeries, label: 'Telegram Desktop · Series & Episode Pricing' },
+      { src: IMAGES.moviebotSeriesMobile, label: 'Telegram Mobile · Series & Episode Pricing' },
+      { src: IMAGES.moviebotPayment, label: 'Telegram Desktop · Telebirr & CBE Payment Proof' },
+      { src: IMAGES.moviebotPaymentMobile, label: 'Telegram Mobile · Telebirr & CBE Payment Proof' },
     ],
   },
   {
@@ -234,8 +295,12 @@ export const PROJECTS: ProjectItem[] = [
       'Android app for Ethiopian university students: 0–100 marks to letter grades, semester GPA and CGPA on 4.0 scale, stored locally on device.',
     stack: ['kotlin', 'android'],
     slides: [
-      { src: IMAGES.gradecalcDesktop, label: 'Tablet · Semester & CGPA Summary' },
-      { src: IMAGES.gradecalcMobile, label: 'Android · On-Device Grade Calculator' },
+      { src: IMAGES.gradecalcMobile, label: 'Android · My Grade Report & GPA Trend' },
+      { src: IMAGES.gradecalcSemester, label: 'Android · Semester Courses & ECTS Breakdown' },
+      { src: IMAGES.gradecalcAddCourse, label: 'Android · Add Course & Assessment Calculator' },
+      { src: IMAGES.gradecalcTarget, label: 'Android · Target CGPA Calculator' },
+      { src: IMAGES.gradecalcSettings, label: 'Android · Ethiopian 4.0 Scale, Amharic & PIN Lock' },
+      { src: IMAGES.gradecalcNewSemester, label: 'Android · Add New Semester Dialog' },
     ],
   },
 ];
@@ -447,7 +512,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
     stack: ['java', 'c'],
     slides: [
       {
-        src: IMAGES.gradecalcDesktop,
+        src: IMAGES.gradecalcMobile,
         label: 'Academic foundation · Structured logic & GPA systems',
       },
       {

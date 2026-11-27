@@ -119,7 +119,7 @@ export function HomeView({ onNavigate, onOpenCv }: HomeViewProps) {
                 src={IMAGES.portrait}
                 alt="Portrait of Natnael Tsedeke, Full-Stack Developer"
                 fallbackLabel="Natnael Tsedeke"
-                className="w-full aspect-[3/4] object-cover rounded-[18px] bg-[#0d1612]"
+                className="w-full aspect-[3/4] object-cover object-top rounded-[18px] bg-[#0d1612]"
               />
             </div>
           </div>
